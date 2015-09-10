@@ -3,11 +3,15 @@ Tic tac toe game with kanvas library ([demo](http://karaxuna.github.io/kanvas-ti
 
 Include js file:
 
-    <script type="text/javascript src="./dist/xox.min.js"></script>
+```html
+<script type="text/javascript src="./dist/xox.min.js"></script>
+```
     
 Add canvas in html:
 
-    <canvas width="400" height="400" id="canvas"></canvas>
+```html
+<canvas width="400" height="400" id="canvas"></canvas>
+```
     
 Initialize game:
 
