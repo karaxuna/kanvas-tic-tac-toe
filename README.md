@@ -40,6 +40,6 @@ game.on('over', function () {
 });
 ```
 
-Build:
+To build minified js file under `/dist` folder, run:
 
     gulp build
