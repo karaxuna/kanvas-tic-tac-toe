@@ -28,7 +28,7 @@ var game = new xox.Game({
 * `width` - count of horizontal blocks on board
 * `height` - count of vertical blocks on board
 * `turn` - Who's turn is now? "x" or "o"
-* `me` - used when playing in network. When indicated user plays with only one type: "x" or "o". When left empty, two users can play with same instance.
+* `me` - used when playing in network. When indicated, user plays with only one type: "x" or "o". When left empty, two users can play with same instance.
  
 Events:
 
