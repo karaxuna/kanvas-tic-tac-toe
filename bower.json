@@ -1,6 +1,7 @@
 {
     "name": "kanvas-tic-tac-toe",
     "description": "Tic tac toe game using kanvas library",
+    "version": "0.0.1",
     "main": [
         "src/xox/Game.js"
     ],

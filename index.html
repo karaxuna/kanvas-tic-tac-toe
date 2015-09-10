@@ -25,12 +25,15 @@
         <!-- endbuild -->
 
         <!-- xox container -->
-        <canvas width="400" height="400" id="canvas"></canvas>
+        <canvas width="500" height="500" id="canvas"></canvas>
 
         <!-- main -->
         <script type="text/javascript">
             var game = new xox.Game({
-                context: document.getElementById('canvas').getContext('2d')
+                context: document.getElementById('canvas').getContext('2d'),
+                width: 6,
+                height: 6,
+                winningScore: 4
             });
 
             game.on('over', function () {
