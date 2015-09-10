@@ -30,6 +30,14 @@
     };
 
     utils.extend(Board.prototype, [Figure.prototype, {
+
+        clean: utils.chain(function () {
+            var self = this;
+            self.matrix.iterate(function (i, j, block) {
+                block.type = null;
+            });
+        }),
+
         getBlockByAbsPosition: function (point) {
             var self = this,
                 matrix = self.matrix,

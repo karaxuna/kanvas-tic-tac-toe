@@ -8,6 +8,7 @@
         var self = this;
         EventTarget.call(self);
 
+        self.options = options;
         self.turn = options.turn || 'x';
         self.me = options.me;
         self.winner;
@@ -23,15 +24,19 @@
             }
         });
 
-        self.on('over', function (data) {
-            self.winner = data.winner;
-        });
-
         scene.add(board, 0);
         scene.draw();
     };
 
     utils.extend(Game.prototype, [EventTarget.prototype, {
+
+        restart: utils.chain(function () {
+            var self = this;
+            self.board.clean();
+            self.winner = null;
+            self.turn = self.options.turn || 'x';
+            self.scene.redraw();
+        }),
 
         fill: utils.chain(function (i, j) {
             var self = this,
@@ -50,13 +55,15 @@
 
             board.fill(i, j, turn);
             scene.redraw();
-            self.check(i, j, turn);
 
-            if (!self.winner) {
-                self.turn = {
-                    'x': 'o',
-                    'o': 'x'
-                }[turn];
+            var over = self.check(i, j, turn);
+            if (over) {
+                self.winner = turn;
+                self.trigger('over');
+            } else if (turn === 'x') {
+                self.turn = 'o';
+            } else if (turn === 'o') {
+                self.turn = 'x';
             }
         }),
 
@@ -112,11 +119,7 @@
                 }
             });
 
-            if (over) {
-                self.trigger('over', {
-                    winner: turn
-                });
-            }
+            return over;
         }
 
     }]);
