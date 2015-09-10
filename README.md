@@ -1,5 +1,5 @@
 # kanvas-tic-tac-toe
-Tic tac toe game with kanvas library
+Tic tac toe game with kanvas library ([demo](http://karaxuna.github.io/kanvas-tic-tac-toe/))
 
 Include js file:
 
