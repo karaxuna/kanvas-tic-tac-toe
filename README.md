@@ -1,6 +1,10 @@
 # kanvas-tic-tac-toe
 Tic tac toe game with kanvas library ([demo](http://karaxuna.github.io/kanvas-tic-tac-toe/))
 
+Install with bower:
+
+    bower install kanvas-tic-tac-toe
+
 Include js file:
 
 ```html
