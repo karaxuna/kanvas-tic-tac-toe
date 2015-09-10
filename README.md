@@ -25,9 +25,9 @@ var game = new xox.Game({
 
 * `context` (required) - canvas 2d context;
 * `winningScore` (default 3) - scores needed to win the game
-* `width` - count of horizontal blocks on board
-* `height` - count of vertical blocks on board
-* `turn` - Who's turn is now? "x" or "o"
+* `width` (default 3) - count of horizontal blocks on board
+* `height` (default 3) - count of vertical blocks on board
+* `turn` (default "x") - Who's turn is now? "x" or "o"
 * `me` - used when playing in network. When indicated, user plays with only one type: "x" or "o". When left empty, two users can play with same instance.
  
 Events:
