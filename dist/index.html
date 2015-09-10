@@ -1,0 +1,19 @@
+<html>
+    <body>
+        <script src="./xox.min.js"></script>
+
+        <!-- xox container -->
+        <canvas width="400" height="400" id="canvas"></canvas>
+
+        <!-- main -->
+        <script type="text/javascript">
+            var game = new xox.Game({
+                context: document.getElementById('canvas').getContext('2d')
+            });
+
+            game.on('over', function () {
+                alert('winner is ' + game.winner);
+            });
+        </script>
+    </body>
+</html>

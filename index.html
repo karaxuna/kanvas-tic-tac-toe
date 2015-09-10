@@ -1,0 +1,37 @@
+<html>
+    <body>
+        <!-- build:js ./xox.min.js -->
+        <!-- kanvas -->
+        <script type="text/javascript" src="./src/kanvas/utils.js"></script>
+        <script type="text/javascript" src="./src/kanvas/EventTarget.js"></script>
+        <script type="text/javascript" src="./src/kanvas/Vector.js"></script>
+        <script type="text/javascript" src="./src/kanvas/Point.js"></script>
+        <script type="text/javascript" src="./src/kanvas/Size.js"></script>
+        <script type="text/javascript" src="./src/kanvas/Mouse.js"></script>
+        <script type="text/javascript" src="./src/kanvas/Figure.js"></script>
+        <script type="text/javascript" src="./src/kanvas/Circle.js"></script>
+        <script type="text/javascript" src="./src/kanvas/Line.js"></script>
+        <script type="text/javascript" src="./src/kanvas/Scene.js"></script>
+
+        <!-- xox -->
+        <script type="text/javascript" src="./src/xox/Matrix.js"></script>
+        <script type="text/javascript" src="./src/xox/Block.js"></script>
+        <script type="text/javascript" src="./src/xox/Board.js"></script>
+        <script type="text/javascript" src="./src/xox/Game.js"></script>
+        <!-- endbuild -->
+
+        <!-- xox container -->
+        <canvas width="400" height="400" id="canvas"></canvas>
+
+        <!-- main -->
+        <script type="text/javascript">
+            var game = new xox.Game({
+                context: document.getElementById('canvas').getContext('2d')
+            });
+
+            game.on('over', function () {
+                alert('winner is ' + game.winner);
+            });
+        </script>
+    </body>
+</html>
