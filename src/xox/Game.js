@@ -66,7 +66,7 @@
                 bmatrix = board.matrix,
                 bwidth = bmatrix.width,
                 bheight = bmatrix.height,
-                amount = 3;
+                winningScore = self.winningScore;
 
             var over = [
                 [1, 0],
@@ -96,7 +96,7 @@
                     } else {
                         block = bmatrix.get(curI, curJ);
                         if (block.type === turn) {
-                            if (++count === amount) {
+                            if (++count === winningScore) {
                                 return true;
                             }
                         } else if (!negated) {
