@@ -39,3 +39,7 @@ game.on('over', function () {
     alert('winner is ' + game.winner);
 });
 ```
+
+Build:
+
+    gulp build
