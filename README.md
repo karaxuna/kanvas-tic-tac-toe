@@ -29,3 +29,7 @@ Notify winner when game is over:
 * `height` - count of vertical blocks on board
 * `turn` - Who's turn is now? "x" or "o"
 * `me` - used when playing in network. When indicated user plays with only one type: "x" or "o". When left empty, two users can play with same instance.
+ 
+Events:
+
+* `over` - triggers when one of the player wins. check `game.winner` to find out winner.
