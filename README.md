@@ -11,15 +11,11 @@ Add canvas in html:
     
 Initialize game:
 
-    var game = new xox.Game({
-        context: document.getElementById('canvas').getContext('2d')
-    });
-    
-Notify winner when game is over:
-
-    game.on('over', function () {
-        alert('winner is ' + game.winner);
-    });
+```javascript
+var game = new xox.Game({
+    context: document.getElementById('canvas').getContext('2d')
+});
+```
     
 `xox.Game` class parameters:
 
@@ -33,3 +29,9 @@ Notify winner when game is over:
 Events:
 
 * `over` - triggers when one of the player wins. check `game.winner` to find out winner.
+
+```javascript
+game.on('over', function () {
+    alert('winner is ' + game.winner);
+});
+```
