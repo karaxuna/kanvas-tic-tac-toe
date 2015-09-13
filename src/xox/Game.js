@@ -20,7 +20,7 @@
         scene.mouse.on('click', function () {
             var block = board.getBlockByAbsPosition(scene.mouse.curr);
             if (block) {
-                self.fill(block.i, block.j);
+                self.fill(block.i, block.j, true);
             }
         });
 
@@ -38,7 +38,7 @@
             self.scene.redraw();
         }),
 
-        fill: utils.chain(function (i, j) {
+        fill: utils.chain(function (i, j, manually) {
             var self = this,
                 turn = self.turn,
                 me = self.me,
@@ -49,7 +49,7 @@
                 throw new Error('Game is over');
             }
 
-            if (me && me !== turn) {
+            if (manually && me && me !== turn) {
                 throw new Error('Not your turn');
             }
 
