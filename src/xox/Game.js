@@ -56,6 +56,12 @@
             board.fill(i, j, turn);
             scene.redraw();
 
+            self.trigger('filled', {
+                i: i,
+                j: j,
+                type: turn
+            });
+
             var over = self.check(i, j, turn);
             if (over) {
                 self.winner = turn;
