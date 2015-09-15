@@ -8,7 +8,7 @@ gulp.task('build', function () {
     var assets = useref.assets();
     return gulp.src('./index.html')
         .pipe(assets)
-        .pipe(gulpif('*.js', uglify()))
+        //.pipe(gulpif('*.js', uglify()))
         .pipe(assets.restore())
         .pipe(useref())
         .pipe(gulp.dest('./dist'));
