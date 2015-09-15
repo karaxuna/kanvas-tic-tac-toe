@@ -1,12 +1,12 @@
 {
     "name": "kanvas-tic-tac-toe",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "description": "Tic tac toe game using kanvas library",
     "repository": {
         "type": "git",
         "url": "https://github.com/karaxuna/kanvas-tic-tac-toe.git"
     },
-    "keywords": [ 
+    "keywords": [
         "tic",
         "tac",
         "toe",
