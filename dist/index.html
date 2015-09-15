@@ -13,9 +13,10 @@
         <script type="text/javascript">
             var game = new xox.Game({
                 context: document.getElementById('canvas').getContext('2d'),
+                letters: ['X', 'O', 'Z'],
                 width: 6,
                 height: 6,
-                winningScore: 4
+                winningScore: 3
             });
 
             game.on('over', function () {
