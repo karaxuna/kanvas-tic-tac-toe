@@ -34,7 +34,7 @@
         clean: utils.chain(function () {
             var self = this;
             self.matrix.iterate(function (i, j, block) {
-                block.type = null;
+                block.letter = null;
             });
         }),
 
@@ -52,7 +52,7 @@
             return result;
         },
 
-        fill: utils.chain(function (i, j, type) {
+        fill: utils.chain(function (i, j, letter) {
             var self = this,
                 width = self.matrix.width,
                 height = self.matrix.height;
@@ -63,11 +63,11 @@
 
             var block = self.matrix.get(i, j);
 
-            if (block.type) {
+            if (block.letter) {
                 throw new Error('Block is already filled');
             }
 
-            block.type = type;
+            block.letter = letter;
         }),
 
         draw: utils.chain(function (scene) {

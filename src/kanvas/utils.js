@@ -2,29 +2,24 @@
 
     global.utils = {
 
-        merge: function (as, excludeInstances) {
-            var copy = {};
-            excludeInstances = excludeInstances || [Array];
-            this.extend(copy, as, excludeInstances);
-            return copy;
-        },
-
         extend: function (a, bs, excludeInstances) {
+            excludeInstances = excludeInstances || [Array];
             for (var i = 0, b; b = bs[i]; i++)
                 for (var prop in b)
                     if (b.hasOwnProperty(prop)) {
                         var isInstanceOfExcluded = false;
                         if (excludeInstances)
-                            for (var i = 0; i < excludeInstances.length; i++)
-                                if (b[prop] instanceof excludeInstances[i])
+                            for (var j = 0; j < excludeInstances.length; j++)
+                                if (b[prop] instanceof excludeInstances[j])
                                     isInstanceOfExcluded = true;
 
-                        if (typeof b[prop] === 'object' && !isInstanceOfExcluded) {
+                        if (typeof b[prop] === 'object' && b[prop] !== null && !isInstanceOfExcluded) {
                             a[prop] = a[prop] !== undefined ? a[prop] : {};
                             this.extend(a[prop], [b[prop]], excludeInstances);
                         } else
                             a[prop] = b[prop];
                     }
+            return a;
         },
 
         setProp: function (obj, prop, value) {

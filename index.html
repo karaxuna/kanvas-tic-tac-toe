@@ -13,7 +13,8 @@
         <script type="text/javascript" src="./src/kanvas/Size.js"></script>
         <script type="text/javascript" src="./src/kanvas/Mouse.js"></script>
         <script type="text/javascript" src="./src/kanvas/Figure.js"></script>
-        <script type="text/javascript" src="./src/kanvas/Circle.js"></script>
+        <script type="text/javascript" src="./src/kanvas/Font.js"></script>
+        <script type="text/javascript" src="./src/kanvas/Text.js"></script>
         <script type="text/javascript" src="./src/kanvas/Line.js"></script>
         <script type="text/javascript" src="./src/kanvas/Scene.js"></script>
 
@@ -31,9 +32,10 @@
         <script type="text/javascript">
             var game = new xox.Game({
                 context: document.getElementById('canvas').getContext('2d'),
+                letters: ['X', 'O', 'Z'],
                 width: 6,
                 height: 6,
-                winningScore: 4
+                winningScore: 3
             });
 
             game.on('over', function () {

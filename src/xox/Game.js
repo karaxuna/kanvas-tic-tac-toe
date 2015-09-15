@@ -4,17 +4,28 @@
         EventTarget = kanvas.EventTarget,
         utils = kanvas.utils;
 
+    Game.prototype.defaultOptions = {
+        letters: ['X', 'O'],
+        turnIndex: 0,
+        meIndex: null,
+        winningScore: 3,
+        width: 3,
+        height: 3
+    };
+
     function Game(options) {
         var self = this;
+        options = self.options = utils.extend({}, [self.defaultOptions, options], [Array, CanvasRenderingContext2D]);
         EventTarget.call(self);
 
         self.options = options;
-        self.turn = options.turn || 'x';
-        self.me = options.me;
+        self.letters = options.letters;
+        self.turnIndex = options.turnIndex;
+        self.meIndex = options.meIndex;
+        self.winningScore = options.winningScore;
         self.winner;
-        self.winningScore = options.winningScore || 3;
 
-        var board = self.board = new Board(options.width || 3, options.height || 3, 1, 10);
+        var board = self.board = new Board(options.width, options.height, 1, 10);
         var scene = self.scene = new Scene(options.context);
 
         scene.mouse.on('click', function () {
@@ -34,14 +45,15 @@
             var self = this;
             self.board.clean();
             self.winner = null;
-            self.turn = self.options.turn || 'x';
+            self.turnIndex = self.options.turnIndex;
             self.scene.redraw();
         }),
 
         fill: utils.chain(function (i, j, manually) {
             var self = this,
-                turn = self.turn,
-                me = self.me,
+                letters = self.letters,
+                turn = letters[self.turnIndex],
+                me = letters[self.meIndex],
                 board = self.board,
                 scene = self.scene;
 
@@ -59,17 +71,17 @@
             self.trigger('filled', {
                 i: i,
                 j: j,
-                type: turn
+                letter: turn
             });
 
             var over = self.check(i, j, turn);
             if (over) {
                 self.winner = turn;
                 self.trigger('over');
-            } else if (turn === 'x') {
-                self.turn = 'o';
-            } else if (turn === 'o') {
-                self.turn = 'x';
+            } else if (self.turnIndex < letters.length - 1) {
+                self.turnIndex += 1;
+            } else {
+                self.turnIndex = 0;
             }
         }),
 
@@ -108,7 +120,7 @@
                         }
                     } else {
                         block = bmatrix.get(curI, curJ);
-                        if (block.type === turn) {
+                        if (block.letter === turn) {
                             if (++count === winningScore) {
                                 return true;
                             }
