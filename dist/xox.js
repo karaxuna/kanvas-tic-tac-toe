@@ -775,7 +775,7 @@
             self.scene.redraw();
         }),
 
-        fill: utils.chain(function (i, j, manually) {
+        fill: utils.chain(function (i, j, manually, silent) {
             var self = this,
                 letters = self.letters,
                 turn = letters[self.turnIndex],
@@ -794,11 +794,13 @@
             board.fill(i, j, turn);
             scene.redraw();
 
-            self.trigger('filled', {
-                i: i,
-                j: j,
-                letter: turn
-            });
+            if (!silent) {
+                self.trigger('filled', {
+                    i: i,
+                    j: j,
+                    letter: turn
+                });
+            }
 
             var over = self.check(i, j, turn);
             if (over) {
