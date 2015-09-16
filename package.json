@@ -1,6 +1,6 @@
 {
     "name": "kanvas-tic-tac-toe",
-    "version": "0.1.2",
+    "version": "0.1.3",
     "description": "Tic tac toe game using kanvas library",
     "repository": {
         "type": "git",

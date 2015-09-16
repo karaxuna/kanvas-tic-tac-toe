@@ -14,10 +14,13 @@
             height = self.height,
             values = self.values;
 
-        var i, j;
+        var i, j, br;
         for (i = 0; i < width; i++) {
             for (j = 0; j < height; j++) {
-                callback(i, j, values[i] ? values[i][j] : null);
+                br = callback(i, j, values[i] ? values[i][j] : null) === false;
+                if (br) {
+                    break;
+                }
             }
         }
     };

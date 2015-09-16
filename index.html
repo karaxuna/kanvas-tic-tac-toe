@@ -39,7 +39,11 @@
             });
 
             game.on('over', function () {
-                alert('winner is ' + game.winner);
+                if (game.winner) {
+                    alert('Winner is ' + game.winner);
+                } else {
+                    alert('Draw')
+                }
                 game.restart();
             });
 

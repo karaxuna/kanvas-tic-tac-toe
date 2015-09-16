@@ -76,14 +76,26 @@
                 });
             }
 
-            var over = self.check(i, j, turn);
-            if (over) {
+            var won = self.check(i, j, turn);
+            if (won) {
                 self.winner = turn;
                 self.trigger('over');
-            } else if (self.turnIndex < letters.length - 1) {
-                self.turnIndex += 1;
             } else {
-                self.turnIndex = 0;
+                var full = true;
+                board.matrix.iterate(function (i, j, block) {
+                    if (!block.letter) {
+                        full = false;
+                        return false;
+                    }
+                });
+                if (full) {
+                    self.winner = null;
+                    self.trigger('over');
+                } else if (self.turnIndex < letters.length - 1) {
+                    self.turnIndex += 1;
+                } else {
+                    self.turnIndex = 0;
+                }
             }
         }),
 
@@ -95,7 +107,7 @@
                 bheight = bmatrix.height,
                 winningScore = self.winningScore;
 
-            var over = [
+            var won = [
                 [1, 0],
                 [0, 1],
                 [1, -1],
@@ -139,7 +151,7 @@
                 }
             });
 
-            return over;
+            return won;
         }
 
     }]);
