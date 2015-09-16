@@ -8,7 +8,7 @@ Install with bower:
 Include js file:
 
 ```html
-<script type="text/javascript src="./dist/xox.min.js"></script>
+<script type="text/javascript src="./dist/xox.js"></script>
 ```
     
 Add canvas in html:
@@ -31,19 +31,23 @@ var game = new xox.Game({
 * `winningScore` (default 3) - scores needed to win the game
 * `width` (default 3) - count of horizontal blocks on board
 * `height` (default 3) - count of vertical blocks on board
-* `turn` (default "x") - Who's turn is now? "x" or "o"
-* `me` - used when playing in network. When indicated, user plays with only one type: "x" or "o". When left empty, two users can play with same instance.
+* `turnIndex` (default 0) - Who's turn is now? Index of the player
+* `meIndex` - used when playing in network.
  
 Events:
 
-* `over` - triggers when one of the player wins. check `game.winner` to find out winner.
+* `over` - triggers when one of the player wins. check `game.winner` to find out winner (null if draw).
 
 ```javascript
 game.on('over', function () {
-    alert('winner is ' + game.winner);
+    if (game.winner) {
+        alert('Winner is ' + game.winner);
+    } else {
+        alert('Draw');
+    }
 });
 ```
 
-To build minified js file under `/dist` folder, run:
+To build js file under `/dist` folder, run:
 
     gulp build
